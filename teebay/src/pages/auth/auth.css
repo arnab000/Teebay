@@ -1,0 +1,22 @@
+.button-container{
+    text-align: center;
+}
+.my-button {
+    
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  .sign-in{
+   color: rgb(30, 109, 136);
+   cursor: pointer;
+   padding-left: 5px;
+  }
+  .sign-up-end-line{
+    justify-content: center;
+
+    text-align: center;
+    padding-top: 30px;
+    display: flex;
+}

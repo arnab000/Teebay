@@ -1,0 +1,217 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateCategoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateProductInput {
+  buyer: UserInput
+  buyerId: Int
+  categories: [Int!]!
+  createdAt: DateTime!
+  description: String
+  id: Int!
+  price: Int!
+  rent: Int!
+  rentType: String
+  renter: UserInput
+  renterId: Int
+  seller: UserInput
+  sellerId: Int
+  title: String!
+  updatedAt: DateTime!
+}
+
+input CreateRentSystemInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateUserInput {
+  address: String
+  email: String!
+  id: Int!
+  name: String
+  password: String
+  phone: String
+  productsBought: [ProductInput!]
+  productsForSale: [ProductInput!]
+  productsRented: [ProductInput!]
+  productsRentedSE: [RentInput!]
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createCategory(createCategoryInput: CreateCategoryInput!): categoryType!
+  createProduct(createProductInput: CreateProductInput!): ProductType!
+  createRentSystem(createRentSystemInput: CreateRentSystemInput!): RentType!
+  createUser(createUserInput: CreateUserInput!): UserType!
+  removeCategory(id: Int!): categoryType!
+  removeProduct(id: Int!): ProductType!
+  removeRentSystem(id: Int!): RentType!
+  removeUser(id: Int!): UserType!
+  updateBoughtStatus(updateBoughtStatus: updateBoughtStatus!): ProductType!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): categoryType!
+  updateProduct(updateProductInput: UpdateProductInput!): ProductType!
+  updateRentStatus(endTime: DateTime!, productId: Int!, startTime: DateTime!, userId: Int!): ProductType!
+  updateRentSystem(updateRentSystemInput: UpdateRentSystemInput!): RentType!
+  updateUser(updateUserInput: UpdateUserInput!): UserType!
+}
+
+input ProductInput {
+  buyer: UserInput
+  buyerId: Int
+  categories: [categoryInput!]!
+  createdAt: DateTime!
+  description: String
+  id: Int!
+  price: Int!
+  rent: Int!
+  rentType: String
+  renter: [UserInput!]
+  renterS: [UserInput!]
+  seller: UserInput
+  sellerId: Int
+  sold: Boolean
+  title: String!
+  updatedAt: DateTime!
+}
+
+type ProductType {
+  buyer: UserType
+  buyerId: Int
+  categories: [categoryType!]!
+  createdAt: DateTime!
+  description: String
+  id: Int!
+  price: Int!
+  rent: Int!
+  rentType: String
+  renter: [UserType!]
+  renterS: [UserType!]
+  seller: UserType
+  sellerId: Int
+  sold: Boolean
+  title: String!
+  updatedAt: DateTime!
+}
+
+type Query {
+  categories: [categoryType!]!
+  category(id: Int!): categoryType!
+  product(id: Int!): ProductType!
+  products: [ProductType!]!
+  productsBySellerId(id: Int!): [ProductType!]!
+  rentSystem(id: Int!): RentType!
+  user(email: String!): UserType!
+  users: [UserType!]!
+}
+
+input RentInput {
+  endTime: DateTime!
+  id: Int!
+  products: [ProductInput!]
+  renter: UserInput
+  renterId: Int
+  startTime: DateTime!
+}
+
+type RentType {
+  endTime: DateTime!
+  id: Int!
+  products: [ProductType!]
+  renter: UserType
+  renterId: Int
+  startTime: DateTime!
+}
+
+input UpdateCategoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateProductInput {
+  buyer: UserInput
+  buyerId: Int
+  categories: [Int!]
+  createdAt: DateTime
+  description: String
+  id: Int!
+  price: Int
+  rent: Int
+  rentType: String
+  renter: UserInput
+  renterId: Int
+  seller: UserInput
+  sellerId: Int
+  title: String
+  updatedAt: DateTime
+}
+
+input UpdateRentSystemInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateUserInput {
+  address: String
+  email: String
+  id: Int
+  name: String
+  password: String
+  phone: String
+  productsBought: [ProductInput!]
+  productsForSale: [ProductInput!]
+  productsRented: [ProductInput!]
+  productsRentedSE: [RentInput!]
+}
+
+input UserInput {
+  address: String
+  email: String!
+  id: Int!
+  name: String
+  password: String
+  phone: String
+  productsBought: [ProductInput!]
+  productsForSale: [ProductInput!]
+  productsRented: [ProductInput!]
+}
+
+type UserType {
+  address: String
+  email: String!
+  id: Int!
+  name: String
+  password: String
+  phone: String
+  productsBought: [ProductType!]
+  productsForSale: [ProductType!]
+  productsRented: [ProductType!]
+}
+
+input categoryInput {
+  id: Int!
+  name: String!
+  products: [ProductInput!]!
+}
+
+type categoryType {
+  id: Int!
+  name: String!
+  products: [ProductType!]!
+}
+
+input updateBoughtStatus {
+  id: Int!
+  userId: Int!
+}
