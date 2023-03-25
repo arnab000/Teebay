@@ -26,4 +26,4 @@ It will open up a server  at 4000.
 npm install
 npm run 
 ```
-
+![Alt Text](category.png)
