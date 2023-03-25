@@ -27,3 +27,73 @@ npm install
 npm run 
 ```
 ![Alt Text](category.png)
+For the app to run succesfully one has populate the category table like the picture. 
+run this code to open prisma studio
+```
+npx prisma studio
+```
+it can be helpful see how all the queries working plus for now one can use prisma studio to make it look like the given picture.
+
+##schema.Prisma
+
+the given schema will give a better idea of how the relation in table are being made
+```
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @default(autoincrement()) @id
+  email    String  @unique
+  name     String?
+  phone    String?
+  password String?
+  address  String?
+  productsForSale Product[] @relation("seller")
+ 
+  productsBought Product[] @relation("buyer")
+  productsRentedSE RentSystem[]@relation("renterSE")
+}
+
+model Product {
+  id           Int      @default(autoincrement()) @id
+  title        String
+  description  String?
+  price        Int
+  rent         Int
+  sold         Boolean?
+  seller       User?    @relation("seller", fields: [sellerId], references: [id])
+  sellerId     Int?
+  buyer        User?    @relation("buyer", fields: [buyerId], references: [id])
+  buyerId      Int?
+  renterS      RentSystem[]
+  rentType     String
+  categories   Categories[] @relation("productCategories")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model RentSystem {
+  id        Int        @default(autoincrement()) @id
+  renter    User?      @relation("renterSE",fields: [renterId], references: [id])
+  renterId  Int
+  startTime DateTime
+  endTime   DateTime
+  products  Product[]
+}
+
+model Categories {
+  id      Int          @default(autoincrement()) @id
+  name    String
+  products Product[]   @relation("productCategories")
+}
+
+```
