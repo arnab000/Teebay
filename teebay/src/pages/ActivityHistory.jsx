@@ -13,6 +13,10 @@ function ActivityHistory() {
 
     const navigate = useNavigate();
     const [myProducts, setMyProducts] = useState([])
+    const [rentColor, setRentcolor] = useState('white')
+    const [lentColor, setLentcolor] = useState('white')
+    const [broughtColor, setBroughtcolor] = useState('mediumpurple')
+    const [soldColor, setSoldcolor] = useState('white')
 
     const { data: productData, loading: productLoading, error: productError, refetch } = useQuery(BROUGHT_PRODUCTS, {
         variables: {
@@ -25,7 +29,7 @@ function ActivityHistory() {
         }
     })
 
-  
+
 
     const { data: lentData, loading: lentLoading, error: lentError } = useQuery(LENT_PRODUCTS, {
         variables: {
@@ -73,38 +77,54 @@ function ActivityHistory() {
 
 
     // }
-    const alignBorrowedTypes = (rentSystem) =>{
+    const alignBorrowedTypes = (rentSystem) => {
         let borrowed = [];
         console.log(rentSystem)
-        for(let i=0;i<rentSystem.length;i++){
-            for(let j=0;j<rentSystem[i].products.length;j++)
+        for (let i = 0; i < rentSystem.length; i++) {
+            for (let j = 0; j < rentSystem[i].products.length; j++)
                 borrowed.push(rentSystem[i].products[j])
         }
         console.log(borrowed.categories);
-       return borrowed;
+        return borrowed;
     }
     const onSoldProductClicked = () => {
 
 
         setMyProducts(soldData?.findSoldItemOfAUser)
+        setSoldcolor("mediumpurple");
+        setRentcolor("white");
+        setLentcolor("white");
+        setBroughtcolor("white");
 
     }
     const onBorrowedProductClicked = () => {
 
 
         setMyProducts(alignBorrowedTypes(productData?.userById?.productsRentedSE))
+        setSoldcolor("white");
+        setRentcolor("mediumpurple");
+        setLentcolor("white");
+        setBroughtcolor("white");
 
     }
     const onBroughtProductClicked = () => {
 
 
-        setMyProducts(productData?.userById.productsBought)
+        setMyProducts(productData?.userById.productsBought);
+        setSoldcolor("white");
+        setRentcolor("white");
+        setLentcolor("white");
+        setBroughtcolor("mediumpurple");
 
     }
     const onLentProductClicked = () => {
 
 
         setMyProducts(lentData?.findLentItemsOfAUser)
+        setSoldcolor("white");
+        setRentcolor("white");
+        setLentcolor("mediumpurple");
+        setBroughtcolor("white");
 
     }
     const onEditProductClicked = (id) => {
@@ -121,17 +141,22 @@ function ActivityHistory() {
     return (
         <>
             <UserNavbar />
-            <div>
+            <div style={{
+                marginTop:'10px'
+            }}>
                 <Row>
                     <Col style={{
                         textAlign: "center",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        borderBottom:`5px solid ${broughtColor}`
+                        
                     }} onClick={onBroughtProductClicked}>
                         <h3 >Bought</h3>
                     </Col>
                     <Col style={{
                         textAlign: "center",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        borderBottom:`5px solid ${soldColor}`
                     }} onClick={
                         onSoldProductClicked
                     } >
@@ -139,14 +164,16 @@ function ActivityHistory() {
                     </Col>
                     <Col style={{
                         textAlign: "center",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        borderBottom:`5px solid ${rentColor}`
                     }} onClick={onBorrowedProductClicked}>
                         <h3 >Borrowed</h3>
                     </Col>
                     <Col style={{
                         textAlign: "center",
-                        cursor: "pointer"
-                    }}  onClick={onLentProductClicked}>
+                        cursor: "pointer",
+                        borderBottom:`5px solid ${lentColor}`
+                    }} onClick={onLentProductClicked}>
                         <h3 >Lent</h3>
                     </Col>
                 </Row>
@@ -154,7 +181,7 @@ function ActivityHistory() {
 
             <div className="min-vw-100 min-vh-100  justify-content-center align-items-center container-fluid">
 
-                {myProducts?.length>0 ? myProducts.map((item, index) =>
+                {myProducts?.length > 0 ? myProducts.map((item, index) =>
                     <><div className="products-container" key={index}>
                         {<Products title={item.title}
                             categories={item.categories}
@@ -163,15 +190,15 @@ function ActivityHistory() {
                             description={item.description}
                             views={0}
                             handleOpenTrash={() => { }}
-                            onCardClick={() => onEditProductClicked(item.id)}
+                            onCardClick={() => { }}
                             disable={true}
                         />}
                     </div></>
-                ):<Card style={{
-                    textAlign:"center"
+                ) : <Card style={{
+                    textAlign: "center"
                 }}>
                     <h1>No product found</h1>
-                    </Card>}
+                </Card>}
 
             </div>
 
