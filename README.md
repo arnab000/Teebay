@@ -10,18 +10,20 @@ To get started with the application, follow these steps:
 
 2. Clone the repository to your local machine.
 
-3. Navigate to backend and then run
+3. Navigate to teebay_backend folderer (backend) and then run
 
 ```
-docker-compose up
+sudo docker-compose up
 ```
-4. When the database is up running run
+4. When the database is up running, create a different instance on the terminal and run these command on backend
 ```
+
 npm install
-npm run start:dev
+npx prisma migrate dev
+npm run start
 ```
 It will open up a server  at 4000.
-5.Then for the frontend run this simple two commands
+5.Then for the frontend, navigate to teebay folder(frontend) run this simply two commands
 ```
 npm install
 npm run 
