@@ -1,7 +1,6 @@
 # Teebay
 
-Teebay is a web application built with React, Apollo Client, NestJS, GraphQL, and Prisma. It allows users to browse and purchase t-shirts online. The application uses Docker Compose to manage the containers.
-
+Teebay is a web application built with React, Apollo Client, NestJS, GraphQL, and Prisma. It allows users to browse and purchase products online.
 ## Getting Started
 
 To get started with the application, follow these steps:
