@@ -9,7 +9,7 @@ To get started with the application, follow these steps:
 
 2. Clone the repository to your local machine.
 ```
-git clone https://github.com/arnab000/Teebay
+git clone https://github.com/arnab000/Teebay.git
 ```
 
 3. Navigate to teebay_backend folder (backend)
