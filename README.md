@@ -26,8 +26,7 @@ It will open up a server  at 4000.
 npm install
 npm run 
 ```
-![Alt Text](category.png)
-For the app to run succesfully one has populate the category table like the picture. 
+
 run this code to open prisma studio
 ```
 npx prisma studio
