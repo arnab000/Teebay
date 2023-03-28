@@ -25,7 +25,7 @@ It will open up a server  at 4000.
 5.Then for the frontend, navigate to teebay folder(frontend) run this simply two commands
 ```
 npm install
-npm run 
+npm start
 ```
 
 
