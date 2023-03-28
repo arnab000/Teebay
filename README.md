@@ -29,11 +29,6 @@ npm install
 npm run 
 ```
 
-run this code to open prisma studio
-```
-npx prisma studio
-```
-it can be helpful see how all the queries working plus for now one can use prisma studio to make it look like the given picture.
 
 ## schema.Prisma
 
