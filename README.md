@@ -33,7 +33,7 @@ npx prisma studio
 ```
 it can be helpful see how all the queries working plus for now one can use prisma studio to make it look like the given picture.
 
-##schema.Prisma
+## schema.Prisma
 
 the given schema will give a better idea of how the relation in table are being made
 ```
