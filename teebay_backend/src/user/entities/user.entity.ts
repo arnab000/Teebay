@@ -1,4 +1,5 @@
 import { ObjectType, Field, Int, InputType } from '@nestjs/graphql';
+import { RentSystem } from 'src/rent-system/entities/rent-system.entity';
 import { Product } from '../../product/entities/product.entity';
 
 @ObjectType("UserType")
@@ -31,4 +32,7 @@ export class User {
 
   @Field(() => [Product], { nullable: true })
   productsRented?: Product[] | null;
+
+  @Field(() => [RentSystem], { nullable: true })
+  productsRentedSE?: RentSystem[] | null;
 }

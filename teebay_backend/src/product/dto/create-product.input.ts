@@ -40,8 +40,8 @@ export class CreateProductInput {
   @Field(() => String, { nullable: true })
   rentType: string;
 
-  @Field(() => [Int])
-  categories: number[]| null;
+  @Field(() => [String])
+  categories: string[]| null;
 
   @Field()
   createdAt: Date;

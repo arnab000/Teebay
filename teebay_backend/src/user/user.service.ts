@@ -27,16 +27,37 @@ export class UserService {
   }
 
   findOne(email: string) {
-    return this.prisma.user.findUnique({where :{email}});
+    return this.prisma.user.findUnique({
+      where :{email}
+    });
   }
 
   findOneById(id: number) {
-    return this.prisma.user.findUnique({where :{id}});
+    return this.prisma.user.findUnique({
+      where :{id},
+      include:{
+        productsBought:{
+          include:{
+            categories:true
+          }
+        },
+        productsRentedSE:{
+          include:{
+            products:{
+              include:{
+                categories:true
+              }
+            }
+          }
+        }
+      }
+    });
   }
 
   update(id: number, updateUserInput: UpdateUserInput) {
     return `This action updates a #${id} user`;
   }
+
 
   remove(id: number) {
     return `This action removes a #${id} user`;

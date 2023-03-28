@@ -78,7 +78,7 @@ export const LOGIN_USER =gql`query($email: String!) {
       description,title,categories{
         id,name
       },
-      price,rent,rentType
+      price,rent,rentType,sold,sellerId
     }
   }`
   export const BUY =gql`
@@ -97,4 +97,82 @@ export const LOGIN_USER =gql`query($email: String!) {
     id
   }
 }
+  `
+  export const BROUGHT_PRODUCTS =gql`
+  query($id : Int!){
+    userById(id:$id){
+       productsBought{
+         title,
+         categories{
+         name
+       },
+       description,
+       price,
+       rent
+       }
+       productsRentedSE{
+        products{
+          title,
+          categories{
+        name
+      },
+      description,
+      price,
+      rent
+        }
+      }
+      
+    }
+  }
+
+  `
+  export const RENTED_PRODUCTS =gql`
+  query($id : Int!){
+    userById(id:$id){
+      productsRentedSE{
+        products{
+          title,
+          categories{
+        name
+      },
+      description,
+      price,
+      rent
+        }
+      }
+    }
+  }
+
+  `
+  export const LENT_PRODUCTS =gql`
+  query($id:Int!){
+    findLentItemsOfAUser(id:$id){
+      title,
+      categories{
+        name
+      },
+      description,
+      price,
+      rent
+      
+      
+    }
+  }
+
+  `
+  export const SOLD_PRODUCTS =gql`
+  query($id:Int!){
+    findSoldItemOfAUser(id:$id){
+      title,
+      categories{
+        name
+      },
+      description,
+      price,
+      rent
+      
+      
+    }
+  }
+  
   `

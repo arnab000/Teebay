@@ -85,13 +85,13 @@ function Registration() {
                             <Col>
                                 <Form.Label>First Name</Form.Label>
                                 <InputGroup size="sm" className="mb-3">
-                                    <FormControl className="shadow-none" type="text" name="firstName" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="First Name" onChange={onInputChange}/>
+                                    <FormControl className="shadow-none" type="text" name="firstname" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="First Name" onChange={onInputChange}/>
                                 </InputGroup>
                             </Col>
                             <Col>
                                 <Form.Label>Last Name</Form.Label>
                                 <InputGroup size="sm" className="mb-3">
-                                    <FormControl className="shadow-none" type="text" name="lastName" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Last Name" onChange={onInputChange}/>
+                                    <FormControl className="shadow-none" type="text" name="lastname" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Last Name" onChange={onInputChange}/>
                                 </InputGroup>
 
                             </Col>

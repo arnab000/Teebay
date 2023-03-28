@@ -10,7 +10,7 @@ input CreateCategoryInput {
 input CreateProductInput {
   buyer: UserInput
   buyerId: Int
-  categories: [Int!]!
+  categories: [String!]!
   createdAt: DateTime!
   description: String
   id: Int!
@@ -106,11 +106,14 @@ type ProductType {
 type Query {
   categories: [categoryType!]!
   category(id: Int!): categoryType!
+  findLentItemsOfAUser(id: Int!): [ProductType!]!
+  findSoldItemOfAUser(id: Int!): [ProductType!]!
   product(id: Int!): ProductType!
   products: [ProductType!]!
   productsBySellerId(id: Int!): [ProductType!]!
   rentSystem(id: Int!): RentType!
   user(email: String!): UserType!
+  userById(id: Int!): UserType!
   users: [UserType!]!
 }
 
@@ -141,7 +144,7 @@ input UpdateCategoryInput {
 input UpdateProductInput {
   buyer: UserInput
   buyerId: Int
-  categories: [Int!]
+  categories: [String!]
   createdAt: DateTime
   description: String
   id: Int!
@@ -185,6 +188,7 @@ input UserInput {
   productsBought: [ProductInput!]
   productsForSale: [ProductInput!]
   productsRented: [ProductInput!]
+  productsRentedSE: [RentInput!]
 }
 
 type UserType {
@@ -197,6 +201,7 @@ type UserType {
   productsBought: [ProductType!]
   productsForSale: [ProductType!]
   productsRented: [ProductType!]
+  productsRentedSE: [RentType!]
 }
 
 input categoryInput {

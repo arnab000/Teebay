@@ -27,8 +27,15 @@ export class ProductService {
         rentType: createProductInput.rentType,
 
         categories: {
-          connect:
-            createProductInput.categories.map(categoryId => ({ id: categoryId }))
+          connectOrCreate:
+            createProductInput.categories.map((name) => ({ 
+              where: { name },
+              create: { name },
+            }))
+            
+          
+          
+            
         }
       }
     });
@@ -66,6 +73,46 @@ export class ProductService {
 
     })
   }
+
+  getAllProductsSoldByOneUser(id:number){
+    return this.prisma.product.findMany(
+      {
+        where: {
+          sold:true,
+          sellerId: id
+        },
+        include:{
+          categories:true
+        }
+
+      }
+    )
+  }
+
+  getAllProductsLentByOneUser(id:number){
+    return this.prisma.product.findMany(
+      {
+        where: {
+          renterS:{
+            some:{
+              NOT:undefined
+            }
+          },
+          sellerId: id
+        },
+        include:{
+          categories:true
+        }
+      
+
+      }
+    )
+  }
+
+
+
+ 
+
 
   updateBoughtStatus(id: number, userId: number) {
     return this.prisma.product.update(
@@ -126,8 +173,11 @@ update(id: number, updateProductInput: UpdateProductInput) {
 
         categories: {
           set: [],
-          connect:
-            updateProductInput.categories.map(categoryId => ({ id: categoryId }))
+          connectOrCreate:
+            updateProductInput.categories.map((name) => ({ 
+              where: { name },
+              create: { name },
+            }))
         }
       }
     }

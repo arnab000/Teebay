@@ -30,6 +30,17 @@ export class ProductResolver {
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.productService.findOne(id);
   }
+
+  @Query(() => [Product], { name: 'findLentItemsOfAUser' })
+  findLentItemsOfAUser(@Args('id', { type: () => Int }) id: number) {
+    return this.productService.getAllProductsLentByOneUser(id);
+  }
+
+  @Query(() => [Product], { name: 'findSoldItemOfAUser' })
+  findSoldItemOfAUser(@Args('id', { type: () => Int }) id: number) {
+    return this.productService.getAllProductsSoldByOneUser(id);
+  }
+
   @Mutation(() => Product)
   updateBoughtStatus(@Args('updateBoughtStatus') updateBoughtStatus: updateBoughtStatus) {
     return this.productService.updateBoughtStatus(updateBoughtStatus.id,updateBoughtStatus.userId);

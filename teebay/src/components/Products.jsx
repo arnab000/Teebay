@@ -7,8 +7,8 @@ const Products = ({ title, categories, price, rent, description, views, handleOp
   const joinALLCategories =(catagories)=>{
     console.log(categories);
     let categoriesName=[];
-    for(let i=0;i<catagories.length;i++){
-      categoriesName.push(catagories[i].name)
+    for(let i=0;i<categories.length;i++){
+      categoriesName.push(categories[i].name)
     }
     console.log(categoriesName);
     return categoriesName;

@@ -32,12 +32,12 @@ function AddProduct() {
         rent: '',
     })
     const option = [
-        { value: 1, label: 'ELECTRONICS' },
-        { value: 3, label: 'FURNITURE' },
-        { value: 2, label: 'HOME APPLIANCES' },
-        { value: 4, label: 'SPORTING GOODS' },
-        { value: 5, label: 'OUTDOOR' },
-        { value: 6, label: 'TOY' },
+        { value: "ELECTRONICS", label: 'ELECTRONICS' },
+        { value: 'FURNITURE', label: 'FURNITURE' },
+        { value: 'HOME APPLIANCES', label: 'HOME APPLIANCES' },
+        { value: 'SPORTING GOODS', label: 'SPORTING GOODS' },
+        { value: 'OUTDOOR', label: 'OUTDOOR' },
+        { value: 'TOY', label: 'TOY' },
 
     ];
     const title = ['Select a title for your product',

@@ -38,8 +38,15 @@ function AllProduct() {
 
 
     // }
-    const onEditProductClicked = (id) => {
-        navigate(`/each-product/${id}`)
+    const onEditProductClicked = (item) => {
+        console.log(item)
+        if(item.sellerId===parseInt(getLoggedIn()))
+        navigate(`/edit-products/${item.id}`)
+        else if(item.sold!==true)
+        navigate(`/each-product/${item.id}`)
+        else if(item.sold===true){
+            alert("Product has been sold")
+        }
 
 
     }
@@ -66,7 +73,7 @@ function AllProduct() {
                             description={item.description}
                             views={0}
                             handleOpenTrash={() => {}}
-                            onCardClick={()=>onEditProductClicked(item.id)}
+                            onCardClick={()=>onEditProductClicked(item)}
                             disable={true}
                              />}
                     </div></>

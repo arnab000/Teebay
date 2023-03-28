@@ -21,7 +21,7 @@ const UserNavbar = () => {
           <Nav className="me-auto">
             <Nav.Link href="/all-products">All Products</Nav.Link>
             <Nav.Link href="/my-products">My Products</Nav.Link>
-            <Nav.Link href="#">Activity History</Nav.Link>
+            <Nav.Link href="/activity">Activity History</Nav.Link>
             
           </Nav>
           <Nav>

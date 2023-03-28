@@ -9,6 +9,7 @@ import AddProduct from './pages/AddProduct';
 import EditProducts from './pages/EditProduct';
 import AllProduct from './pages/AllProduct';
 import BuyOrRent from './pages/BuyOrRent';
+import ActivityHistory from './pages/ActivityHistory';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='/edit-products/:id' element={<EditProducts/>}/>
           <Route path='/all-products' element={<AllProduct/>}/>
           <Route path='/each-product/:id' element={<BuyOrRent/>}/>
+          <Route path='/activity' element={<ActivityHistory/>}/>
         </Routes>
     </BrowserRouter>
   );

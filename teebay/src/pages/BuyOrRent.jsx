@@ -8,6 +8,7 @@ import { useQuery, useMutation } from "@apollo/client"
 import { getLoggedIn } from "../common/localStorageSetup";
 import DeleteConfirmationModal from "../components/DeleteConfirmationModal"
 import RentdateModal from "../components/RentDatesModal";
+import UserNavbar from "../components/UserNavbar";
 
 function BuyOrRent() {
 
@@ -53,7 +54,7 @@ function BuyOrRent() {
         console.log(catagories);
         let categoriesName = [];
         for (let i = 0; i < catagories.length; i++) {
-            categoriesName.push(option[catagories[i].id])
+            categoriesName.push(catagories[i].name)
         }
         console.log(categoriesName);
         return categoriesName;
@@ -99,8 +100,7 @@ function BuyOrRent() {
 
 
     else return (
-
-        <div style={{
+        <><UserNavbar /><div style={{
             padding: "15px"
         }} className=" justify-content-center align-items-center container-fluid">
 
@@ -117,9 +117,8 @@ function BuyOrRent() {
                     <Button style={{
                         float: "right",
                         backgroundColor: "rgb(139, 104, 139)"
-
                     }}
-                    onClick={handleOpen}
+                        onClick={handleOpen}
 
 
                     >
@@ -128,9 +127,8 @@ function BuyOrRent() {
                     <Button style={{
                         float: "right",
                         backgroundColor: "rgb(139, 104, 139)"
-
                     }}
-                    onClick={handleToggle}
+                        onClick={handleToggle}
 
                     >
                         Rent
@@ -145,9 +143,9 @@ function BuyOrRent() {
                 BuyRent={true} />
 
             <RentdateModal setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} handleClose={handleToggle} showModal={showModalRent}
-            onConfirm={onConfirmRent}/>
+                onConfirm={onConfirmRent} />
 
-        </div>
+        </div></>
     )
 }
 export default BuyOrRent;

@@ -9,7 +9,7 @@ import { useQuery,useMutation } from "@apollo/client"
 function EditProducts() {
     let { id } = useParams();
     const navigate = useNavigate();
-    const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, { variables: { id: parseInt(id) } })
+    const { data, loading, error,refetch } = useQuery(GET_PRODUCT_BY_ID, { variables: { id: parseInt(id) } })
     const [editProducts,{ data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(EDTT_PRODUCT )
     const [categories, setCategories] = useState([]);
     const [rentype, setRetType] = useState('per month')
@@ -20,12 +20,12 @@ function EditProducts() {
     ];
 
     const option = [
-        { value: 1, label: 'ELECTRONICS' },
-        { value: 3, label: 'FURNITURE' },
-        { value: 2, label: 'HOME APPLIANCES' },
-        { value: 4, label: 'SPORTING GOODS' },
-        { value: 5, label: 'OUTDOOR' },
-        { value: 6, label: 'TOY' },
+        { value: 'ELECTRONICS', label: 'ELECTRONICS' },
+        { value: 'FURNITURE', label: 'FURNITURE' },
+        { value: 'HOME APPLIANCES', label: 'HOME APPLIANCES' },
+        { value: 'SPORTING GOODS', label: 'SPORTING GOODS' },
+        { value: 'OUTDOOR', label: 'OUTDOOR' },
+        { value: 'TOY', label: 'TOY' },
 
     ];
 
@@ -52,7 +52,7 @@ function EditProducts() {
         console.log(catagories);
         let categoriesName = [];
         for (let i = 0; i < catagories.length; i++) {
-            categoriesName.push(catagories[i].id)
+            categoriesName.push(catagories[i].name)
         }
         console.log(categoriesName);
         return categoriesName;
@@ -80,6 +80,7 @@ function EditProducts() {
     }
 
     useEffect(() => {
+        refetch();
         if (!error && !loading) {
             console.log(data, joinALLCategories(data.product.categories), data.product.rentType);
             setCategories(joinALLCategories(data.product.categories));
