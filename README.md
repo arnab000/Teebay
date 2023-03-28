@@ -9,7 +9,7 @@ To get started with the application, follow these steps:
 
 2. Clone the repository to your local machine.
 
-3. Navigate to teebay_backend folderer (backend) and then run
+3. Navigate to teebay_backend folder (backend) and then run
 
 ```
 sudo docker-compose up
