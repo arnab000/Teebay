@@ -13,8 +13,10 @@ const UserNavbar = () => {
     };
   
     return (
-      <Navbar collapseOnSelect expand="lg" sticky="top" >
-        <Container>
+      <Navbar collapseOnSelect expand="lg" sticky="top" style={{
+        backgroundColor:"aliceblue"
+      }} >
+        <Container >
         <Navbar.Brand href="/my-products">Teebay</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
